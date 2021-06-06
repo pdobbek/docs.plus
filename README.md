@@ -1,153 +1,115 @@
-# A real-time collaborative editor for the web
-<a href="https://hub.docker.com/r/etherpad/etherpad"><img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/etherpad/etherpad"></a>
+[![Generic badge](https://img.shields.io/badge/version-1.8.12-<COLOR>.svg)](https://docs.plus)
+[![MIT license](https://img.shields.io/badge/License-Apache-blue.svg)](http://www.apache.org/licenses/LICENSE-2.0.html)
+[![Open Source? Yes!](https://badgen.net/badge/Open%20Source%20%3F/Yes%21/blue?icon=github)](https://github.com/nwspk/docs.plus)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-green.svg)](https://github.com/nwspk/docs.plus/compare)
+[![All Contributors](https://img.shields.io/badge/all_contributors-4-blue.svg)](#contributors-)
 
-[![Travis (.org)](https://api.travis-ci.org/ether/etherpad-lite.svg?branch=develop)](https://travis-ci.org/github/ether/etherpad-lite)
 
-![Demo Etherpad Animated Jif](doc/images/etherpad_demo.gif "Etherpad in action")
+# 📚 Docs.plus
 
-# About
-Etherpad is a real-time collaborative editor scalable to thousands of simultaneous real time users. It provides full data export capabilities, and runs on _your_ server, under _your_ control.
+**Docs.plus** is a real-time collaborative tools to help communites share knowledge
 
-**[Try it out](https://video.etherpad.com)**
+## About
 
-# Installation
+It is the result of over six years of research by [newspeak.house](https://newspeak.house) into civil society and public sector coordination and crisis response.
+It solves many common organising problems, and can be frictionlessly adopted by all typical stakeholders without needing any training.
 
-## Requirements
-- `nodejs` >= **10.13.0**.
+**Docs.plus** intuitively combines all the common communication tools:
 
-## GNU/Linux and other UNIX-like systems
+- ✔️ Collaborative documents
+- ✔️ Videocalls (with unlimited self-organising breakout rooms)
+- ✔️ Group text chat
+- 🚧 Profiling
+- ⏭️ Email subscription
+- ⏭️ Search, filtering and tagging
+- ⏭️ Mobile and desktop app
+- ⏭️ Push notifications
+- *Suggest the next feature...*
 
-### Quick install on Debian/Ubuntu
+# Base
+
+**Docs.plus** is built on [Etherpad](https://github.com/ether/etherpad-lite) which is a real-time collaborative editor for the web, our team tweek a etherpad bases for the goal we persude, also we are using combanation of etherpad plugin and custom one to power up our goals.
+
+### Plugins
+
+- [ep_wrtc_heading](https://github.com/HMarzban/ep_wrtc_heading)
+- [ep_insert_media](https://github.com/samirsayyad/ep_insert_media)
+- [ep_full_hyperlinks](https://github.com/samirsayyad/ep_full_hyperlinks)
+- [ep_bottom_chat_bar](https://github.com/samirsayyad/ep_bottom_chat_bar)
+- [ep_custom_header_message](https://github.com/samirsayyad/ep_custom_header_message)
+- [ep_docs_plus_customise](https://github.com/samirsayyad/ep_docs_plus_customize)
+- [ep_loading_pad](https://github.com/samirsayyad/ep_loading_pad.git)
+- [ep_profile_modal](https://github.com/samirsayyad/ep_profile_modal)
+- [ep_set_title_on_pad](https://github.com/samirsayyad/ep_set_title_on_pad.git)
+- [ep_adminpads2](https://github.com/rhansen/ep_adminpads2)
+- [ep_comments](https://github.com/ether/ep_comments)
+- [ep_headings2](https://github.com/ether/ep_headings2)
+- [ep_hide_line_numbers](https://github.com/JohnMcLear/ep_hide_line_numbers)
+- [ep_monetization](https://github.com/ISNIT0/ep_monetization)
+- [ep_remove_embed](https://github.com/tjwelde/ep_remove_embed)
+- [ep_sticky_attributes](https://github.com/JohnMcLear/ep_sticky_attributes)
+
+# 🚀 Prerequisites & Installation
+Prerequisites and installation are the same as Etherpad flow, follow this [link](https://github.com/ether/etherpad-lite#installation), or you can follow short steps like the following:
+
+```bash
+# clone the project
+git clone https://github.com/nwspk/docs.plus.git
+
+# move to the project folder
+cd docsplus
+
+# install pre requirement plugins
+npm install --no-save --legacy-peer-deps
+        ep_adminpads2
+        ep_remove_embed
+        ep_hide_line_numbers
+        ep_monetization
+        https://github.com/samirsayyad/ep_custom_header_message
+        https://github.com/samirsayyad/ep_bottom_chat_bar
+        https://github.com/ether/ep_comments_page
+        https://github.com/ether/ep_cursortrace
+        https://github.com/samirsayyad/ep_docs_plus_customize#c68bc28
+        https://github.com/samirsayyad/ep_full_hyperlinks#ce24888
+        https://github.com/samirsayyad/ep_headings2#f88ac17
+        https://github.com/samirsayyad/ep_insert_media#35b26c5
+        https://github.com/samirsayyad/ep_loading_pad#84a888f
+        https://github.com/samirsayyad/ep_profile_modal#eb3bb71
+        https://github.com/samirsayyad/ep_set_title_on_pad#b1688b0
+        https://github.com/samirsayyad/ep_table_of_contents#326ccfc
+        https://github.com/HMarzban/ep_wrtc_heading#1fd4e08
+        https://github.com/ether/ep_sticky_attributes.git
+
+# run the docsplus
+src/bin/run.sh
 ```
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt install -y nodejs
-git clone --branch master https://github.com/ether/etherpad-lite.git && cd etherpad-lite && bin/run.sh
-```
+> For mor info Take a look at [CI](https://github.com/nwspk/docs.plus/blob/master/.github/workflows/master.yml)
 
-### Manual install
-You'll need git and [node.js](https://nodejs.org) installed (minimum required Node version: **10.13.0**).
+> If you wanna have your Turn/Stun server for the video chat you can follow this installation for the [Coturn](https://github.com/coturn/coturn) server; [Link](https://dev.to/kevin_odongo35/how-to-configure-a-turn-server-3opd). <br>*By default, the video plugin uses a public Stun server [More info](https://github.com/HMarzban/ep_wrtc_heading)*
 
-**As any user (we recommend creating a separate user called etherpad):**
+# 🤝 Contributing
+Thank you for your interest in contributing! Please feel free to put up a PR for any issue or feature request.
 
-1. Move to a folder where you want to install Etherpad. Clone the git repository: `git clone --branch master git://github.com/ether/etherpad-lite.git`
-2. Change into the new directory containing the cloned source code: `cd etherpad-lite`
-3. run `bin/run.sh` and open <http://127.0.0.1:9001> in your browser.
+### ✨ Contributors 
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
 
-To update to the latest released version, execute `git pull origin`. The next start with `bin/run.sh` will update the dependencies.
+|  |  |  |  |
+| --------- | ------ | ----------- | ------------- |
+| [<img src="https://avatars.githubusercontent.com/u/5703915?v=4?s=100" width="100"><br> 📆💼 edsaperia](https://github.com/edsaperia) | [<img src="https://avatars.githubusercontent.com/u/11405614?v=4?s=100" width="100"><br>💻🚇 samirsayyad](https://github.com/samirsayyad)  | [<img src="https://avatars.githubusercontent.com/u/20157508?v=4?s=100" width="100"><br>💻🚇Hossein](https://github.com/HMarzban)  | [<img src="https://avatars.githubusercontent.com/u/1060378?v=4?s=100" width="100"><br>🚇Josh Balfour](https://github.com/joshbalfour)  |
 
-[Next steps](#next-steps).
 
-## Windows
+# 👋 Contact
+If you have any further questions, please don’t hesitate, you can reach us by the following:
+- Twitter: [@docsdotplus](https://twitter.com/docsdotplus)
+- Github: [docs.plus](https://github.com/nwspk/docs.plus)
+- Slack: [docsplus](docsplus.slack.com)
+- Email: [contact@newspeak.house](mailto:contact@newspeak.house)
 
-### Prebuilt Windows package
-This package runs on any Windows machine, but for development purposes, please do a manual install.
+# 📝 License
+This project is licensed under the [Apache License v2](http://www.apache.org/licenses/LICENSE-2.0.html) License
 
-1. [Download the latest Windows package](https://etherpad.org/#download)
-2. Extract the folder
+# Support
+**Docs.plus** is free and open source, please help us stay online:
 
-Run `start.bat` and open <http://localhost:9001> in your browser. You like it? [Next steps](#next-steps).
+<a href="https://patreon.com/docsplus"><img src="https://img.shields.io/endpoint.svg?url=https%3A%2F%2Fshieldsio-patreon.vercel.app%2Fapi%3Fusername%3Ddocsplus%26type%3Dpatrons&style=for-the-badge" /> </a>
 
-### Manually install on Windows
-You'll need [node.js](https://nodejs.org) and (optionally, though recommended) git.
-
-1. Grab the source, either
-  - download <https://github.com/ether/etherpad-lite/zipball/master>
-  - or `git clone --branch master https://github.com/ether/etherpad-lite.git`
-2. With a "Run as administrator" command prompt execute `bin\installOnWindows.bat`
-
-Now, run `start.bat` and open <http://localhost:9001> in your browser.
-
-Update to the latest version with `git pull origin`, then run `bin\installOnWindows.bat`, again.
-
-If cloning to a subdirectory within another project, you may need to do the following:
-
-1. Start the server manually (e.g. `node/node_modules/ep_etherpad-lite/node/server.js`)
-2. Edit the db `filename` in `settings.json` to the relative directory with the file (e.g. `application/lib/etherpad-lite/var/dirty.db`)
-3. Add auto-generated files to the main project `.gitignore`
-
-## Docker container
-
-Find [here](doc/docker.md) information on running Etherpad in a container.
-
-# Next Steps
-
-## Tweak the settings
-You can modify the settings in `settings.json`.
-If you need to handle multiple settings files, you can pass the path to a settings file to `bin/run.sh` using the `-s|--settings` option: this allows you to run multiple Etherpad instances from the same installation.
-Similarly, `--credentials` can be used to give a settings override file, `--apikey` to give a different APIKEY.txt file and `--sessionkey` to give a non-default SESSIONKEY.txt.
-**Each configuration parameter can also be set via an environment variable**, using the syntax `"${ENV_VAR}"` or `"${ENV_VAR:default_value}"`. For details, refer to `settings.json.template`.
-Once you have access to your `/admin` section settings can be modified through the web browser.
-
-If you are planning to use Etherpad in a production environment, you should use a dedicated database such as `mysql`, since the `dirtyDB` database driver is only for testing and/or development purposes.
-
-## Secure your installation
-If you have enabled authentication in `users` section in `settings.json`, it is a good security practice to **store hashes instead of plain text passwords** in that file. This is _especially_ advised if you are running a production installation.
-
-Please install [ep_hash_auth plugin](https://www.npmjs.com/package/ep_hash_auth) and configure it.
-If you prefer, `ep_hash_auth` also gives you the option of storing the users in a custom directory in the file system, without having to edit `settings.json` and restart Etherpad each time.
-
-## Customize functionalities with plugins
-
-![Basic install](doc/images/etherpad_basic.png "Basic Installation")
-
-![Full Features](doc/images/etherpad_full_features.png "You can add a lot of plugins !")
-
-Etherpad is very customizable through plugins. Instructions for installing themes and plugins can be found in [the plugin wiki article](https://github.com/ether/etherpad-lite/wiki/Available-Plugins).
-
-## Getting the full features
-Run the following command in your Etherpad folder to get all of the features visible in the demo gif:
-
-```
-npm install ep_headings2 ep_markdown ep_comments_page ep_align ep_page_view ep_font_color ep_webrtc ep_embedded_hyperlinks2
-```
-
-## Customize the style with skin variants
-
-Open <http://127.0.0.1:9001/p/test#skinvariantsbuilder> in your browser and start playing !
-
-![Skin Variant](doc/images/etherpad_skin_variants.gif "Skin variants")
-
-## Helpful resources
-The [wiki](https://github.com/ether/etherpad-lite/wiki) is your one-stop resource for Tutorials and How-to's.
-
-Documentation can be found in `doc/`.
-
-# Development
-
-## Things you should know
-You can debug Etherpad using `bin/debugRun.sh`.
-
-You can run Etherpad quickly launching `bin/fastRun.sh`. It's convenient for developers and advanced users. Be aware that it will skip the dependencies update, so remember to run `bin/installDeps.sh` after installing a new dependency or upgrading version.
-
-If you want to find out how Etherpad's `Easysync` works (the library that makes it really realtime), start with this [PDF](https://github.com/ether/etherpad-lite/raw/master/doc/easysync/easysync-full-description.pdf) (complex, but worth reading).
-
-## Contributing
-Read our [**Developer Guidelines**](https://github.com/ether/etherpad-lite/blob/master/CONTRIBUTING.md)
-
-# Get in touch
-The official channel for contacting the development team is via the [Github issues](https://github.com/ether/etherpad-lite/issues).
-
-For **responsible disclosure of vulnerabilities**, please write a mail to the maintainer (a.mux@inwind.it).
-
-# HTTP API
-Etherpad is designed to be easily embeddable and provides a [HTTP API](https://github.com/ether/etherpad-lite/wiki/HTTP-API)
-that allows your web application to manage pads, users and groups. It is recommended to use the [available client implementations](https://github.com/ether/etherpad-lite/wiki/HTTP-API-client-libraries) in order to interact with this API.
-
-OpenAPI (previously swagger) definitions for the API are exposed under `/api/openapi.json`.
-
-# jQuery plugin
-There is a [jQuery plugin](https://github.com/ether/etherpad-lite-jquery-plugin) that helps you to embed Pads into your website.
-
-# Plugin Framework
-Etherpad offers a plugin framework, allowing you to easily add your own features. By default your Etherpad is extremely light-weight and it's up to you to customize your experience. Once you have Etherpad installed you should [visit the plugin page](https://static.etherpad.org/) and take control.
-
-# Translations / Localizations  (i18n / l10n)
-Etherpad comes with translations into all languages thanks to the team at [TranslateWiki](https://translatewiki.net/).
-
-If you require translations in [plugins](https://static.etherpad.org/) please send pull request to each plugin individually.
-
-# FAQ
-Visit the **[FAQ](https://github.com/ether/etherpad-lite/wiki/FAQ)**.
-
-# License
-[Apache License v2](http://www.apache.org/licenses/LICENSE-2.0.html)
